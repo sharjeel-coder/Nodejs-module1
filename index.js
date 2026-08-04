@@ -27,7 +27,17 @@ const http = require("http");
 // });
 
 const server = http.createServer((req, res) => {
-  res.end("hello from server");
+  const pathName = req.url;
+  if (pathName === "/" || pathName === "/overview") {
+    res.end("this is overview page");
+  } else if (pathName === "/product") {
+    res.end("this is the product page");
+  } else {
+    res.writeHead(404, {
+      "Content-type": "text/html",
+    });
+    res.end("<h1>page not found</h1>");
+  }
 });
 
 server.listen(8000, "127.0.0.1", () => {
