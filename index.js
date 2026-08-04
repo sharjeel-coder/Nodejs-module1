@@ -26,12 +26,19 @@ const http = require("http");
 //   });
 // });
 
+//instead of doing the file read again and again we read at once and store when the program starts and save it to data
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+const dataObj = JSON.parse(data);
+
 const server = http.createServer((req, res) => {
   const pathName = req.url;
   if (pathName === "/" || pathName === "/overview") {
     res.end("this is overview page");
   } else if (pathName === "/product") {
     res.end("this is the product page");
+  } else if (pathName === "/api") {
+    res.writeHead(200, { "Content-type": "application/json" });
+    res.end(data);
   } else {
     res.writeHead(404, {
       "Content-type": "text/html",
