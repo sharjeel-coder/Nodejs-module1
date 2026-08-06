@@ -1,6 +1,6 @@
 # Node Farm
 
-A simple Node.js project created while following the Node.js  course.
+A simple Node.js project created while following the Node.js course.
 
 ## Features
 
@@ -19,5 +19,6 @@ A simple Node.js project created while following the Node.js  course.
 ## Run the project
 
 ```bash
-node index.js
+npm start
+npm run start
 ```
